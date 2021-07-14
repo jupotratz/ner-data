@@ -86,6 +86,6 @@ A pasta final contendo as saídas após todo o passo a passo contém a estrutura
 2. Pasta com as sentenças modificadas anotadas (processo de **data augmentation**)
 <img src='imgs/flow_folders_output_augmentation.png' height="243.75" width="243.75" align="center" >
 
-2. Sub pasta com as sentenças modificadas anotadas (processo de **data augmentation**)
+2. Sub pasta com as sentenças modificadas anotadas (processo de **data augmentation** + **numero de chuncks diferente de 1**)
 <img src='imgs/flow_folders_output_augmentation_tipo.png' height="168.75" width="356.25" align="center" >
 
