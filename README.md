@@ -12,6 +12,13 @@ B --> F
 E --> F[Agrupar dataset]
 F --> G[Desambiguar]
 G --> H[Treino, Teste e Validação]
+
+style A fill:#4169E1
+style B fill:#B22222
+style C fill:#228B22
+style D fill:#32CD32
+style E fill:#32CD32
+style F fill:#A52A2A
 ```
 ## Dataset 
 Os datasets de treinamento, validação e test são formado por sentenças cujos labels então no formato IOB. O formato IOB (abreviação de dentro, fora, início) é um formato de marcação comum para tokens de marcação em uma tarefa de agrupamento em linguística computacional (por exemplo , reconhecimento de entidade nomeada ). Ele foi apresentado por Ramshaw e Marcus em seu artigo "Text Chunking using Transformation-Based Learning", 1995.
