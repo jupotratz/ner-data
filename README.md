@@ -5,8 +5,7 @@ Este repositório tem a função de aprensentar uma metodologia e as ferramentas
 ```mermaid
 graph TD
 A(Pré-Processamento) -->B(Anotação - Distant Supervision)
-B --> C(Aumento da base de dados)
-C --> D(Criar novas sentenças)
+B --> D(Criar novas sentenças)
 D --> E(Anotar novas sentenças)
 B --> F
 E --> F(Agrupar dataset)
@@ -104,6 +103,20 @@ O formato final consistem em um .csv com os tokens e labels respectivos. Um exme
 
 A pasta final contendo as saídas após todo o passo a passo contém a estrutura definida pela imagem abaixo:
 <img src='imgs/flow_folders_output.png' height="325" width="400" align="center" >
+
+O conteúdo de cada pasta é detalhado a seguir:
+
+1. **full_text**: Nesta pasta será salvo um arquivo .json com o texto pré-processado e seu respectivo documento de origem.
+
+2. **aux**: É uma pasta auxiliar criada no caso de sub-dividir o processo de anotação dos dados em sub-processos (**num_of_chuncks diferente de 1**). Neste caso ao realizar o processo de criação de novas sentenças, caso o processo de anotação inicial tenha sido sub-dividido em sub-processos será realizada a junção desses arquivos para formar os arquivos sentences.csv e sentences_annotation.csv que são necessários para criar novas sentenças.
+
+3. **texts_augmentation**: Quando se cria novas sentenças para o processo de **data augmentation** as novas sentenças com suas respectivas informações relevantes são salvas nesta pasta, sendo um arquivo .csv para cada tipo de entidade (é possível criar novas sentenças levando em conta uma classe específica se for necessário).
+ - Sentença modificada
+ - Sentença original
+ - Documento de origem 
+
+4. **augmentation**:
+
 
 1. Pasta com as sentenças novas criadas no processo de **data augmentation**
 <img src='imgs/flow_folders_output_texts_augmentation.png' height="150" width="243.75" align="center" >
