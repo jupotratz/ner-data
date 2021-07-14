@@ -106,7 +106,7 @@ A pasta final contendo as saídas após todo o passo a passo contém a estrutura
 
 O conteúdo de cada pasta é detalhado a seguir:
 
-1. **full_text**: Nesta pasta será salvo um arquivo .json com o texto pré-processado e seu respectivo documento de origem.
+1. **full_text**: Nesta pasta será salvo um arquivo full_text.json com o texto pré-processado e seu respectivo documento de origem.
 
 2. **aux**: É uma pasta auxiliar criada no caso de sub-dividir o processo de anotação dos dados em sub-processos (**num_of_chuncks diferente de 1**), desde que **não seja** para o processo de **data augmentation** (para o data augmentation é criada uma pasta própria). Neste caso ao realizar o processo de criação de novas sentenças, caso o processo de anotação inicial tenha sido sub-dividido em sub-processos será realizada a junção desses arquivos para formar os arquivos sentences.csv e sentences_annotation.csv que são necessários para criar novas sentenças.
 
@@ -115,15 +115,15 @@ O conteúdo de cada pasta é detalhado a seguir:
  - Sentença original
  - Documento de origem 
 
+
+<img src='imgs/flow_folders_output_augmentation.png' height="243.75" width="243.75" align="center" >
+
 4. **augmentation**:
 
 
 1. Pasta com as sentenças novas criadas no processo de **data augmentation**
 <img src='imgs/flow_folders_output_texts_augmentation.png' height="150" width="243.75" align="center" >
 
-
-2. Pasta com as sentenças modificadas anotadas (processo de **data augmentation**)
-<img src='imgs/flow_folders_output_augmentation.png' height="243.75" width="243.75" align="center" >
 
 2. Sub pasta com as sentenças modificadas anotadas (processo de **data augmentation** + **numero de chuncks diferente de 1**)
 <img src='imgs/flow_folders_output_augmentation_tipo.png' height="168.75" width="356.25" align="center" >
