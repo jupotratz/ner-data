@@ -6,18 +6,19 @@ Este repositório tem a função de aprensentar uma metodologia e as ferramentas
 graph TD
 A(Pré-Processamento) -->B(Anotação - Distant Supervision)
 B --> C(Aumento da base de dados)
-C --> D[Criar novas sentenças]
-D --> E[Anotar novas sentenças]
+C --> D(Criar novas sentenças)
+D --> E(Anotar novas sentenças)
 B --> F
-E --> F[Agrupar dataset]
-F --> G[Desambiguar]
-G --> H[Treino, Teste e Validação]
+E --> F(Agrupar dataset)
+F --> G(Desambiguar)
+G --> H(Treino, Teste e Validação)
 
 style A fill:#4169E1
 style B fill:#B22222
 style D fill:#228B22
 style E fill:#B22222
 style F fill:#FFD700
+style G fill:#FFD700
 ```
 ## Dataset 
 Os datasets de treinamento, validação e test são formado por sentenças cujos labels então no formato IOB. O formato IOB (abreviação de dentro, fora, início) é um formato de marcação comum para tokens de marcação em uma tarefa de agrupamento em linguística computacional (por exemplo , reconhecimento de entidade nomeada ). Ele foi apresentado por Ramshaw e Marcus em seu artigo "Text Chunking using Transformation-Based Learning", 1995.
