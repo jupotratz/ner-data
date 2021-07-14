@@ -120,5 +120,6 @@ O conteúdo de cada pasta é detalhado a seguir:
 <img src='imgs/flow_folders_output_augmentation.png' height="243.75" width="243.75" align="center" >
 
 Vale salientar que essa pasta pode ter sub-pastas, caso haja a necessidade de se subdividir os processos de anotação para pelo menos uma das classe (uma forma de aproveitar máquinas disponíveis). Caso isso seja, necessário para reduzir o tempo de criação da base de dados a subpasta é organizada da seguinte forma, tendo como nome o nome da classe:
+
 <img src='imgs/flow_folders_output_augmentation_tipo.png' height="168.75" width="356.25" align="center" >
 
