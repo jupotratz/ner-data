@@ -25,19 +25,18 @@ style H fill:#DDA0D6
 ```mermaid
 graph LR
 A(pre_processing.py) -->B(annotation.py)
-B --> C(Augmentation)
-C --> D(get_new_sentences.py)
-D --> E(annotation.py)
-B --> F
-E --> F(join_data.py)
-f --> G(Treino, Teste e Validação)
+B --> C(get_new_sentences.py)
+C --> D(annotation.py)
+B --> E
+D --> E(join_data.py)
+E --> F(Treino, Teste e Validação)
 
 style A fill:#4169E1
 style B fill:#B22222
-style D fill:#228B22
-style E fill:#B22222
-style F fill:#FFD700
-style G fill:#DDA0D6
+style C fill:#228B22
+style D fill:#B22222
+style E fill:#FFD700
+style F fill:#DDA0D6
 ```
 ## Dataset 
 Os datasets de treinamento, validação e test são formado por sentenças cujos labels então no formato IOB. O formato IOB (abreviação de dentro, fora, início) é um formato de marcação comum para tokens de marcação em uma tarefa de agrupamento em linguística computacional (por exemplo , reconhecimento de entidade nomeada ). Ele foi apresentado por Ramshaw e Marcus em seu artigo "Text Chunking using Transformation-Based Learning", 1995.
