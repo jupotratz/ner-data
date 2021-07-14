@@ -56,18 +56,8 @@ O formato final consistem em um .csv com os tokens e labels respectivos. Um exme
 |27|	agosto	|O|	48925|
 
 
-## Fluxo do projeto
-```mermaid
-graph TD
-A(Pré-Processamento) -->B(Anotação - Distant Supervision)
-B --> C(Aumento da base de dados)
-C --> D[Criar novas sentenças]
-D --> E[Anotar novas sentenças]
-B --> F
-E --> F[Agrupar dataset]
-F --> G[Desambiguar]
-G --> H[Treino, Teste e Validação]
-```
+## Descrição do fluxo do projeto
+
 
  - **Pré-Processamento** Nesta etapa o texto contidos em todos os documentos .txt encontrados nas pastas dadas como entrada são lidos e sofrem uma limpeza.
  1. Remoção de caracteres especiais
@@ -80,3 +70,13 @@ G --> H[Treino, Teste e Validação]
  - **Agrupar dataset:**
  - **Desambiguar:**
  - **Treino, Teste e Validação:**
+
+
+## Output 
+
+- **Pastas e arquivos de saída:**
+
+<img src='imgs/flow_folders_output.png' height="425" width="600" align="center" >
+<img src='imgs/flow_folders_output_augmentation.png' height="425" width="600" align="center" >
+<img src='imgs/flow_folders_output_augmentation_tipo.png' height="425" width="600" align="center" >
+<img src='imgs/flow_folders_output_texts_augmentation.png' height="425" width="600" align="center" >
