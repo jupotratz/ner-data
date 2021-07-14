@@ -116,10 +116,8 @@ O conteúdo de cada pasta é detalhado a seguir:
 
 <img src='imgs/flow_folders_output_texts_augmentation.png' height="150" width="243.75" align="center" >
 
-4. **augmentation**:
+4. **augmentation**: Nesta pasta são salvos os arquivos anotados para cada uma das classes que se deseja aumentar a quantidade de dados. Vale salientar que essa pasta pode ou não ter sub-pastas, caso haja a necessidade de se subdividir os processos de anotação para pelo menos uma classe (uma forma de aproveitar máquinas disponíveis).
 
-
-1. Pasta com as sentenças novas criadas no processo de **data augmentation**
 
 <img src='imgs/flow_folders_output_augmentation.png' height="243.75" width="243.75" align="center" >
 
