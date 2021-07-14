@@ -77,6 +77,6 @@ O formato final consistem em um .csv com os tokens e labels respectivos. Um exme
 - **Pastas e arquivos de saída:**
 
 <img src='imgs/flow_folders_output.png' height="325" width="400" align="center" >
-<img src='imgs/flow_folders_output_augmentation.png' height="325" width="350" align="center" >
-<img src='imgs/flow_folders_output_augmentation_tipo.png' height="225" width="400" align="center" >
+<img src='imgs/flow_folders_output_augmentation.png' height="325" width="325" align="center" >
+<img src='imgs/flow_folders_output_augmentation_tipo.png' height="225" width="450" align="center" >
 <img src='imgs/flow_folders_output_texts_augmentation.png' height="200" width="325" align="center" >
