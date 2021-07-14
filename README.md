@@ -80,12 +80,12 @@ A pasta final contendo as saídas após todo o passo a passo contém a estrutura
 <img src='imgs/flow_folders_output.png' height="325" width="400" align="center" >
 
 1. Pasta com as sentenças novas criadas no processo de **data augmentation**
-<img src='imgs/flow_folders_output_texts_augmentation.png' height="200" width="325" align="center" >
+<img src='imgs/flow_folders_output_texts_augmentation.png' height="100" width="162.5" align="center" >
 
 
 2. Pasta com as sentenças modificadas anotadas (processo de **data augmentation**)
-<img src='imgs/flow_folders_output_augmentation.png' height="325" width="325" align="center" >
+<img src='imgs/flow_folders_output_augmentation.png' height="162.5" width="162.5" align="center" >
 
 2. Sub pasta com as sentenças modificadas anotadas (processo de **data augmentation**)
-<img src='imgs/flow_folders_output_augmentation_tipo.png' height="225" width="475" align="center" >
+<img src='imgs/flow_folders_output_augmentation_tipo.png' height="112.5" width="237.5" align="center" >
 
