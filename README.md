@@ -15,9 +15,8 @@ G --> H[Treino, Teste e Validação]
 
 style A fill:#4169E1
 style B fill:#B22222
-style C fill:#228B22
-style D fill:#6B8E23
-style E fill:#9ACD32
+style D fill:#228B22
+style E fill:#B22222
 style F fill:#FFD700
 ```
 ## Dataset 
