@@ -12,8 +12,8 @@ graph TD
 A(Pré-Processamento) -->B(Anotação - Distant Supervision)
 B --> D(Criar novas sentenças)
 D --> E(Anotar novas sentenças)
-B --> F
-E --> F(Agrupar dataset)
+B --> G
+E --> G
 F --> G(Desambiguar)
 G --> H(Treino, Teste e Validação)
 
