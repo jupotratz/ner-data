@@ -119,9 +119,9 @@ O formato final consistem em um .csv com os tokens e labels respectivos. Um exme
 |27|	agosto	|O|	48925|
 
  
-## Passo a Passo
+# Passo a Passo
 
-### Docker image
+## Docker image
 
 - Caminho SDU (.sif) 
 
@@ -161,6 +161,32 @@ ssh sdumont<NODE_ID>
  ```
 singularity run -B <forder_share> <docker_path(.sif)> python main.py -i './' -c "0" -m 1 -f './000001.txt' -e 'utf-16'"
 ```
+
+## 1, Pré-processamento do texto
+```bash
+python pre_process_text.py --folders_files './texts/,./texts_2/' --out_folder './output/'
+```
+        |Parâmetro|Abreviação|Descrição|Observação|
+        |---------|----------|---------|----------|
+        |--folders_files|-i|Caminho das pastas contendo os .txts a serem usados para formar o conjunto de dados. |Se existir mais de uma pastas, elas devem ser separadas por vírgulas na string a ser passada para esse parâmetro.|
+        |--out_folder|-o|Pasta principals onde serão salvos os arquivos de saída.|Essa pasta vai conter subpastas com nomes já definidos.|
+        |--docs_limit|-dl|Limite de documentos que serão processados durante o processo|É um parâmentro limitador para realização de testes (se for igual a zero ele não limita a quantidade de documentos e entende que é a quantidade total presente nas pastas indicadas)|
+ 
+## 1, Anotação do texto pré-processado
+```bash
+python annotation.py --inp_file './output/full_text/full_text.json' --out_folder './output/' -d './data/' --number_of_processors 48 
+```
+        |Parâmetro|Abreviação|Descrição|Observação|
+        |---------|----------|---------|----------|
+        |--inp_file|-i|Caminho das pastas contendo os .txts a serem usados para formar o conjunto de dados. |Se existir mais de uma pastas, elas devem ser separadas por vírgulas na string a ser passada para esse parâmetro.|
+        |--out_folder|-o|Pasta principals onde serão salvos os arquivos de saída.|Essa pasta vai conter subpastas com nomes já definidos.|
+        |--ner_list_folder|-d|Pasta contendo os .txts que contém as listas de palavras relacionadas a cada entidade.|É importante que o nome de cada arquivo .txt dessa pasta seja a entidade de enterece (**exemplo: poco.txt**)|
+        |--tipo|-t|Classe ner considerada.|Preenchido apenas quando se quer anotar sentenças criadas no sub-processo de aumento de dados.|
+        |--augmentation|-a|Define se é a anotação inicial ou processo de aumento de dados|Preenchido apenas quando se quer anotar sentenças criadas no sub-processo de aumento de dados. Pode ser passado qualquer valor diferente de **None**|
+        |--number_of_processors|-p|Número de processadores a serem utilizados para paralelizar as tarefas|Quanto mais processadores melhor é um processo demorado!!!|
+        |--number_of_chunks|-nc|Número de sub-processos.|Utilizado quando se tem bastante rucurso computacional disponível (várias máquinas) para reduzir o tempo de criação do dataset. Por default é igual a 1|
+        |--chunk_id|-ci|Id do processo a ser executado.|Vai do id=0 até o id=number_of_chunks-1|
+
 
 ## Output 
 
