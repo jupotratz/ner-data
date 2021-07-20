@@ -33,8 +33,8 @@ A(pre_processing.py) -->B(annotation.py)
 B --> C(get_new_sentences.py)
 C --> D(annotation.py)
 B --> E
-D --> E(join_data.py)
-E --> F(dataset.py)
+D --> E(join_desambiguation.py)
+E --> F(split_data.py)
 
 style A fill:#4169E1
 style B fill:#B22222
