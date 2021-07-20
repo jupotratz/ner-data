@@ -224,7 +224,7 @@ python join_desambiguation.py --out_folder './output/' --folder_ner_list './data
 ### 5. Criando o datasert final
 
 ```bash
-python annotation.py --out_folder './output/' -d './data/' --number_of_processors 48 --tipo 'campo' 
+python split_data.py --out_folder './output/' --tipo 1 
 ```
 |Parâmetro|Abreviação|Descrição|Observação|
 |---------|----------|---------|----------|
