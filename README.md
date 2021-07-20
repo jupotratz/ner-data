@@ -88,7 +88,7 @@ O formato final consistem em um .csv com os tokens e labels respectivos. Um exme
 ## Lista de estidades
 As listas de entidades são formadas por palavras ou expressões relacionadas a uma classe de interesse no domínio de Óleo & Gás. A figura abaixo mostra a quantidade de palavras / termos relacionados de cada classe. Essaa foram fornecidas por especialistas da área.
 
-<img src='imgs/ner_lists.png' height="300" width="475" align="center" >
+<img src='imgs/ner_lists.png' height="500" width="800" align="center" >
 
 
 
