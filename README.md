@@ -41,7 +41,42 @@ style D fill:#B22222
 style E fill:#FFD700
 style F fill:#DDA0D6
 ```
-## Dataset 
+
+
+
+
+
+## Descrição do fluxo do projeto
+
+
+ - **Pré-Processamento** Nesta etapa o texto contidos em todos os documentos .txt encontrados nas pastas dadas como entrada são lidos e sofrem uma limpeza.
+   1. Remoção de caracteres especiais
+   2. Separação da pontuação do texto (exemplo: teste: --> teste :) 
+   3. O pré-processamento realizado realiza tranformações e limpezas de tal forma que as sentenças sejam semelhantes, em termos de formatação, às sentenças encontradas no **geocorpus** (uma espécie de dataset GOLDEN para a aplicação NER no domínio de Óle & Gás). Geocurpus está disponível em: https://github.com/jneto04/geocorpus
+ 
+ - **Anotação:** Consiste me anotar as sentenças automaticamente no formato BIO, explicado anteriormente, utilizando a técnica de **distant supervison**. Utilizando como fonde de dados externos um conjunto de documentos relacionados ao domínio específico e listas de entidades.
+
+#### Lista de estidades
+As listas de entidades são formadas por palavras ou expressões relacionadas a uma classe de interesse no domínio de Óleo & Gás. A figura abaixo mostra a quantidade de palavras / termos relacionados de cada classe. Essaa foram fornecidas por especialistas da área.
+
+<img src='imgs/ner_lists.png' height="500" width="800" align="center" >
+ - **Aumento da base de dados:** esse passo não é obrigatório. Mas caso seja necessário criar mais dados utilizando a técnica de substituição de palavras / termos relacionados a cada classe para aumentar a quantidade de amostras e apliar o vocabulário com todas as palavras / termos relacionados conhecidos.
+   1. **Criar novas sentenças:** Seleciona as sentenças  com uma classe específica e faz a substituição simples das palavras por uma regra de substituição e definição da quantidade de novas sentenças que serão criadas. 
+   2. **Anotar novas sentenças:** Realiza o processo de anotação automática nas novas sentenças criadas. 
+ - **Desambiguar:** Essa etapa ocorre da seguinte forma:
+   1. Inicialmente selecionamos as sentenças anotadas inicialmente com o texto original e aplicamos o processo de desambiguação de dados (é criada uma nova coluna na tabela com a identifficação da sentença).
+   2. Após isso, criamos o novo label de anotação unindo todas as classes, apenas para os casos onde não há ambiguidade ente as sentenças evitando multiplas anotações para um mesmo token.
+   3. Identificamos amostras positivas e negativas.
+   4. Salvamos o arquivo com as modificações sofridas.
+   5. Os procedimentos acima citados são feitos para as sentenças modificadas anotadas no data augmentation (arquivos .csv dentro da pasta **augmentation**) 
+
+ - **Treino, Teste e Validação:** Existem duas possibilidades de separação para o dataset
+   1. Separação de treino + validação e teste por meio da sentença original.
+   2. Separação de treino + validação e teste por meio do documento de origem da sentença.
+
+O formato final e o tipo de anotação é descrito a seguir.
+
+#### Dataset 
 Os datasets de treinamento, validação e test são formado por sentenças cujos labels então no formato IOB. O formato IOB (abreviação de dentro, fora, início) é um formato de marcação comum para tokens de marcação em uma tarefa de agrupamento em linguística computacional (por exemplo , reconhecimento de entidade nomeada ). Ele foi apresentado por Ramshaw e Marcus em seu artigo "Text Chunking using Transformation-Based Learning", 1995.
 
 -   _B_: é uma tag que indica o início de um trecho de texto que representa a entidade de interesse.
@@ -83,37 +118,7 @@ O formato final consistem em um .csv com os tokens e labels respectivos. Um exme
 |26|	em	|O|	48925|
 |27|	agosto	|O|	48925|
 
-## Lista de estidades
-As listas de entidades são formadas por palavras ou expressões relacionadas a uma classe de interesse no domínio de Óleo & Gás. A figura abaixo mostra a quantidade de palavras / termos relacionados de cada classe. Essaa foram fornecidas por especialistas da área.
-
-<img src='imgs/ner_lists.png' height="500" width="800" align="center" >
-
-
-
-## Descrição do fluxo do projeto
-
-
- - **Pré-Processamento** Nesta etapa o texto contidos em todos os documentos .txt encontrados nas pastas dadas como entrada são lidos e sofrem uma limpeza.
-   1. Remoção de caracteres especiais
-   2. Separação da pontuação do texto (exemplo: teste: --> teste :) 
-   3. O pré-processamento realizado realiza tranformações e limpezas de tal forma que as sentenças sejam semelhantes, em termos de formatação, às sentenças encontradas no **geocorpus** (uma espécie de dataset GOLDEN para a aplicação NER no domínio de Óle & Gás). Geocurpus está disponível em: https://github.com/jneto04/geocorpus
  
- - **Anotação:** Consiste me anotar as sentenças automaticamente no formato BIO, explicado anteriormente, utilizando a técnica de **distant supervison**. 
- - **Aumento da base de dados:** esse passo não é obrigatório. Mas caso seja necessário criar mais dados utilizando a técnica de substituição de palavras / termos relacionados a cada classe para aumentar a quantidade de amostras e apliar o vocabulário com todas as palavras / termos relacionados conhecidos.
-   1. **Criar novas sentenças:** Seleciona as sentenças  com uma classe específica e faz a substituição simples das palavras por uma regra de substituição e definição da quantidade de novas sentenças que serão criadas. 
-   2. **Anotar novas sentenças:** Realiza o processo de anotação automática nas novas sentenças criadas. 
- - **Desambiguar:** Essa etapa ocorre da seguinte forma:
-   1. Inicialmente selecionamos as sentenças anotadas inicialmente com o texto original e aplicamos o processo de desambiguação de dados (é criada uma nova coluna na tabela com a identifficação da sentença).
-   2. Após isso, criamos o novo label de anotação unindo todas as classes, apenas para os casos onde não há ambiguidade ente as sentenças evitando multiplas anotações para um mesmo token.
-   3. Identificamos amostras positivas e negativas.
-   4. Salvamos o arquivo com as modificações sofridas.
-   5. Os procedimentos acima citados são feitos para as sentenças modificadas anotadas no data augmentation (arquivos .csv dentro da pasta **augmentation**) 
-
- - **Treino, Teste e Validação:** Existem duas possibilidades de separação para o dataset
-   1. Separação de treino + validação e teste por meio da sentença original.
-   2. Separação de treino + validação e teste por meio do documento de origem da sentença.
-
-
 ## Output 
 
 - **Pastas e arquivos de saída:**
