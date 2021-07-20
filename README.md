@@ -116,12 +116,12 @@ O conteúdo de cada pasta é detalhado a seguir:
 
 
 2. **aux**: É uma pasta auxiliar criada no caso de sub-dividir o processo de anotação dos dados em sub-processos (**num_of_chuncks diferente de 1**), desde que **não seja** para o processo de **data augmentation** (para o data augmentation é criada uma pasta própria). Neste caso ao realizar o processo de criação de novas sentenças, caso o processo de anotação inicial tenha sido sub-dividido em sub-processos será realizada a junção desses arquivos para formar os arquivos sentences.csv e sentences_annotation.csv que são necessários para criar novas sentenças.
-<img src='imgs/aux_folder.png' height="375" width="600" align="center" >
+<img src='imgs/aux_folder.png' height="375" width="750" align="center" >
 
 
 3. **texts_augmentation**: Quando se cria novas sentenças para o processo de **data augmentation** as novas sentenças com suas respectivas informações relevantes são salvas nesta pasta, sendo um arquivo .csv para cada tipo de entidade (é possível criar novas sentenças levando em conta uma classe específica se for necessário -sentença modificada, sentença original, documento de origem).
 
-<img src='imgs/texts_augmentation.png' height="150" width="243.75" align="center" >
+<img src='imgs/texts_augmentation.png' height="300" width="500" align="center" >
 
 4. **augmentation**: Nesta pasta são salvos os arquivos anotados para cada uma das classes que se deseja aumentar a quantidade de dados. O conteúdo da pasta é exemplificado na imagem abaixo:
 <img src='imgs/flow_folders_output_augmentation.png' height="243.75" width="243.75" align="center" >
