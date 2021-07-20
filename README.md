@@ -107,7 +107,7 @@ O formato final consistem em um .csv com os tokens e labels respectivos. Um exme
 - **Pastas e arquivos de saída:**
 
 A pasta final contendo as saídas após todo o passo a passo contém a estrutura definida pela imagem abaixo:
-<img src='imgs/output.png' height="300" width="350" align="center" >
+<img src='imgs/output.png' height="375" width="437.5" align="center" >
 
 O conteúdo de cada pasta é detalhado a seguir:
 
