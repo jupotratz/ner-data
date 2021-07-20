@@ -141,7 +141,7 @@ O conteúdo de cada pasta é detalhado a seguir:
 <img src='imgs/texts_augmentation.png' height="350" width="450" align="center" >
 
 4. **augmentation**: Nesta pasta são salvos os arquivos anotados para as sentenças modificadas no processo de **data augmentation**, separadas por classe, visto que podemos aumentar a quantidade de sentenças para classes específicas e obter grandes conjuntos de dados (na casa de GB de informação). O conteúdo da pasta é exemplificado na imagem abaixo:
-<img src='imgs/augmentation_1.png' height="400" width="425" align="center" >
+<img src='imgs/augmentation_1.png' height="425" width="425" align="center" >
 
 Vale salientar que essa pasta pode ter sub-pastas, caso haja a necessidade de se subdividir os processos de anotação para pelo menos uma das classe (uma forma de aproveitar máquinas disponíveis caso seja necessário reduzir o tempo de criação da base de dados e aproveitar os recussos computacionais). A subpasta é organizada da seguinte forma, tendo como nome o nome da classe:
 
