@@ -5,7 +5,7 @@ Para visualizar os diagramas presentes neste Readme instale a seguinte extensão
  - **Google Chrome**: https://chrome.google.com/webstore/detail/github-+-mermaid/goiiopgdnkogdbjmncgedmgpoajilohe
  - **Firefoz**: https://addons.mozilla.org/pt-BR/firefox/addon/github-mermaid/
 
-## Descrição do Projeto
+# Descrição do Projeto
 Este repositório tem a função de aprensentar uma metodologia e as ferramentas para a criação de um banco de dados para o treinamento de uma rede neural para a tarefa de reconhecimento de entidades nomeadas (NER) utilizando para tal a técnica de **distant siupervision**. Uma visão geral da metodologia para a criação da base de dados pode ser obsvervada na figura abaixo.
 ```mermaid
 graph TD
@@ -121,21 +121,22 @@ O formato final consistem em um .csv com os tokens e labels respectivos. Um exme
  
 # Passo a Passo
 
-## Docker image
+### Clone o repositório
+```bash
+git clone https://codigo-externo.petrobras.com.br/buscasemantica/puc-ica/reconhecimento-de-entidade/dataset-generator-distant-supervision.git
+```
+
+### Docker image
 
 - Caminho SDU (.sif) 
-
 ```
 /scratch/parceirosbr/buscaict/share/dockers/ner_pytorch_2.1_latest.sif
 ```
  - Docker pull (Docker Hub)
-
 ```
 docker pull strink/relation-extraction:tf2.3
 ```
-
  - Docker build
- 
 ```
 docker build -t <docker image name:tag> .
 ```
@@ -145,7 +146,6 @@ docker build -t <docker image name:tag> .
 ```
 docker run -it -v <local folder>:<docker folder> -u $(id -u):$(id -g) --net=host -e HOME=<docker folder> --rm <docker image name:tag> /bin/bash
 ```
-
 ```
 jupyter notebook --ip=0.0.0.0 --port=<porta definida> --no-browser --allow-root --notebook-dir=<docker folder>
 ```
@@ -159,36 +159,79 @@ Para rodar por meio de docker no SDU temos que utilizar o singularity, portanto 
 ssh sdumont<NODE_ID>
 ```
  ```
-singularity run -B <forder_share> <docker_path(.sif)> python main.py -i './' -c "0" -m 1 -f './000001.txt' -e 'utf-16'"
+singularity run -B <forder_share> <docker_path(.sif)> python script.py
 ```
 
-## 1, Pré-processamento do texto
+### 1. Pré-processamento do texto
 ```bash
 python pre_process_text.py --folders_files './texts/,./texts_2/' --out_folder './output/'
 ```
-        |Parâmetro|Abreviação|Descrição|Observação|
-        |---------|----------|---------|----------|
-        |--folders_files|-i|Caminho das pastas contendo os .txts a serem usados para formar o conjunto de dados. |Se existir mais de uma pastas, elas devem ser separadas por vírgulas na string a ser passada para esse parâmetro.|
-        |--out_folder|-o|Pasta principals onde serão salvos os arquivos de saída.|Essa pasta vai conter subpastas com nomes já definidos.|
-        |--docs_limit|-dl|Limite de documentos que serão processados durante o processo|É um parâmentro limitador para realização de testes (se for igual a zero ele não limita a quantidade de documentos e entende que é a quantidade total presente nas pastas indicadas)|
+|Parâmetro|Abreviação|Descrição|Observação|
+|---------|----------|---------|----------|
+|--folders_files|-i|Caminho das pastas contendo os .txts a serem usados para formar o conjunto de dados. |Se existir mais de uma pastas, elas devem ser separadas por vírgulas na string a ser passada para esse parâmetro.|
+|--out_folder|-o|Pasta principals onde serão salvos os arquivos de saída.|Essa pasta vai conter subpastas com nomes já definidos.|
+|--docs_limit|-dl|Limite de documentos que serão processados durante o processo|É um parâmentro limitador para realização de testes (se for igual a zero ele não limita a quantidade de documentos e entende que é a quantidade total presente nas pastas indicadas)|
  
-## 1, Anotação do texto pré-processado
+### 2. Anotação do texto pré-processado
 ```bash
 python annotation.py --inp_file './output/full_text/full_text.json' --out_folder './output/' -d './data/' --number_of_processors 48 
 ```
-        |Parâmetro|Abreviação|Descrição|Observação|
-        |---------|----------|---------|----------|
-        |--inp_file|-i|Caminho das pastas contendo os .txts a serem usados para formar o conjunto de dados. |Se existir mais de uma pastas, elas devem ser separadas por vírgulas na string a ser passada para esse parâmetro.|
-        |--out_folder|-o|Pasta principals onde serão salvos os arquivos de saída.|Essa pasta vai conter subpastas com nomes já definidos.|
-        |--ner_list_folder|-d|Pasta contendo os .txts que contém as listas de palavras relacionadas a cada entidade.|É importante que o nome de cada arquivo .txt dessa pasta seja a entidade de enterece (**exemplo: poco.txt**)|
-        |--tipo|-t|Classe ner considerada.|Preenchido apenas quando se quer anotar sentenças criadas no sub-processo de aumento de dados.|
-        |--augmentation|-a|Define se é a anotação inicial ou processo de aumento de dados|Preenchido apenas quando se quer anotar sentenças criadas no sub-processo de aumento de dados. Pode ser passado qualquer valor diferente de **None**|
-        |--number_of_processors|-p|Número de processadores a serem utilizados para paralelizar as tarefas|Quanto mais processadores melhor é um processo demorado!!!|
-        |--number_of_chunks|-nc|Número de sub-processos.|Utilizado quando se tem bastante rucurso computacional disponível (várias máquinas) para reduzir o tempo de criação do dataset. Por default é igual a 1|
-        |--chunk_id|-ci|Id do processo a ser executado.|Vai do id=0 até o id=number_of_chunks-1|
+|Parâmetro|Abreviação|Descrição|Observação|
+|---------|----------|---------|----------|
+|--inp_file|-i|Caminho das pastas contendo os .txts a serem usados para formar o conjunto de dados. |Se existir mais de uma pastas, elas devem ser separadas por vírgulas na string a ser passada para esse parâmetro.|
+|--out_folder|-o|Pasta principals onde serão salvos os arquivos de saída.|Essa pasta vai conter subpastas com nomes já definidos.|
+|--ner_list_folder|-d|Pasta contendo os .txts que contém as listas de palavras relacionadas a cada entidade.|É importante que o nome de cada arquivo .txt dessa pasta seja a entidade de enterece (**exemplo: poco.txt**)|
+|--tipo|-t|Classe ner considerada.|Preenchido apenas quando se quer anotar sentenças criadas no sub-processo de aumento de dados.|
+|--number_of_processors|-p|Número de processadores a serem utilizados para paralelizar as tarefas|Quanto mais processadores melhor é um processo demorado!!!|
+|--number_of_chunks|-nc|Número de sub-processos.|Utilizado quando se tem bastante rucurso computacional disponível (várias máquinas) para reduzir o tempo de criação do dataset. Por default é igual a 1|
+|--chunk_id|-ci|Id do processo a ser executado.|Vai do id=0 até o id=number_of_chunks-1|
 
+### 3. Criar novas sentenças
+```bash
+python get_new_sentences.py --out_folder './output/' --folder_ner_list './data/' --number_of_processors 48 
+```
+|Parâmetro|Abreviação|Descrição|Observação|
+|---------|----------|---------|----------|
+|--out_folder|-o|Pasta principals onde serão salvos os arquivos de saída.|Essa pasta vai conter subpastas com nomes já definidos.|
+|--folder_ner_list|-d|Pasta contendo os .txts que contém as listas de palavras relacionadas a cada entidade.|É importante que o nome de cada arquivo .txt dessa pasta seja a entidade de enterece (**exemplo: poco.txt**)|
+|--tipo|-t|Classe ner considerada ou todas as classes se manter o dafault.|Em caso de definir um tipo cria-se apenas as sentenças relacionadas a aquela clsse específica definida.|
+|--number_of_processors|-p|Número de processadores a serem utilizados para paralelizar as tarefas|Quanto mais processadores melhor é um processo demorado!!!|
+|--limit_words|-l|Limita a quantidade de palavras da lista de entidades que serão usadas para realizar as substituições automáticas.|aconselhável limitar classes com grande quantidade de palavras (poco,litilogia,geocronologia,etc).|
 
-## Output 
+### 3. Anotar novas sentenças
+```bash
+python annotation.py --out_folder './output/' -d './data/' --number_of_processors 48 --tipo 'campo' 
+```
+ - Nesse caso é necessário definir tipo (classe ner). Como são criadas uma quantidade considerável de novas sentenças é necessário ter um processo para cada classes e as vezes ainda subdividir esses processos. 
+ - Pra subdividir cada processó é necessário definir também o **chunk_id** e o **number_of_chunks**. Como no exemplo abaixo:
+```bash
+python annotation.py --out_folder './output/' -d './data/' --number_of_processors 48 --tipo 'campo' --number_of_chunks 5 --chunk_id 0
+python annotation.py --out_folder './output/' -d './data/' --number_of_processors 48 --tipo 'campo' --number_of_chunks 5 --chunk_id 1
+python annotation.py --out_folder './output/' -d './data/' --number_of_processors 48 --tipo 'campo' --number_of_chunks 5 --chunk_id 2
+python annotation.py --out_folder './output/' -d './data/' --number_of_processors 48 --tipo 'campo' --number_of_chunks 5 --chunk_id 3
+python annotation.py --out_folder './output/' -d './data/' --number_of_processors 48 --tipo 'campo' --number_of_chunks 5 --chunk_id 4
+```
+
+### 4. Desambiguar dados e definir amostras positivas e negativas e um novo label multiclasse
+```bash
+python join_desambiguation.py --out_folder './output/' --folder_ner_list './data/' 
+```
+|Parâmetro|Abreviação|Descrição|Observação|
+|---------|----------|---------|----------|
+|--out_folder|-o|Pasta principals onde serão salvos os arquivos de saída.|Essa pasta vai conter subpastas com nomes já definidos.|
+|--folder_ner_list|-d|Pasta contendo os .txts que contém as listas de palavras relacionadas a cada entidade.|É importante que o nome de cada arquivo .txt dessa pasta seja a entidade de enterece (**exemplo: poco.txt**)|
+
+### 5. Criando o datasert final
+
+```bash
+python annotation.py --out_folder './output/' -d './data/' --number_of_processors 48 --tipo 'campo' 
+```
+|Parâmetro|Abreviação|Descrição|Observação|
+|---------|----------|---------|----------|
+|--out_folder|-o|Pasta principals onde serão salvos os arquivos de saída.|Essa pasta vai conter subpastas com nomes já definidos.|
+|--tipo|-t|Tipo de divisão que será realizada.|Por dafault é igual a 1 (Separação de treino + validação e teste por meio da sentença original.). Mas também pode ser igual a 2 (Separação de treino + validação e teste por meio do documento de origem da sentença.)|
+
+# Output 
 
 - **Pastas e arquivos de saída:**
 
