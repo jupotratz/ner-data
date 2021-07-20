@@ -119,16 +119,16 @@ O conteúdo de cada pasta é detalhado a seguir:
 <img src='imgs/aux_folder.png' height="375" width="750" align="center" >
 
 
-3. **texts_augmentation**: Quando se cria novas sentenças para o processo de **data augmentation** as novas sentenças com suas respectivas informações relevantes são salvas nesta pasta, sendo um arquivo .csv para cada tipo de entidade (é possível criar novas sentenças levando em conta uma classe específica se for necessário -sentença modificada, sentença original, documento de origem).
+3. **texts_augmentation**: Quando se cria novas sentenças durante o processo de **data augmentation** as novas sentenças com suas respectivas informações relevantes são salvas nesta pasta, sendo um arquivo .csv para cada tipo de entidade (é possível criar novas sentenças levando em conta uma classe específica se for necessário). O .csv contém a sentença modificada, a sentença original e o documento de origem).
 
 <img src='imgs/texts_augmentation.png' height="300" width="450" align="center" >
 
-4. **augmentation**: Nesta pasta são salvos os arquivos anotados para cada uma das classes que se deseja aumentar a quantidade de dados. O conteúdo da pasta é exemplificado na imagem abaixo:
-<img src='imgs/flow_folders_output_augmentation.png' height="243.75" width="243.75" align="center" >
+4. **augmentation**: Nesta pasta são salvos os arquivos anotados para as sentenças modificadas no processo de **data augmentation**, separadas por classe, visto que podemos aumentar a quantidade de sentenças para classes específicas e obter grandes conjuntos de dados (na casa de GB de informação). O conteúdo da pasta é exemplificado na imagem abaixo:
+<img src='imgs/augmentation_1.png' height="243.75" width="243.75" align="center" >
 
-Vale salientar que essa pasta pode ter sub-pastas, caso haja a necessidade de se subdividir os processos de anotação para pelo menos uma das classe (uma forma de aproveitar máquinas disponíveis). Caso isso seja, necessário para reduzir o tempo de criação da base de dados a subpasta é organizada da seguinte forma, tendo como nome o nome da classe:
+Vale salientar que essa pasta pode ter sub-pastas, caso haja a necessidade de se subdividir os processos de anotação para pelo menos uma das classe (uma forma de aproveitar máquinas disponíveis caso seja necessário reduzir o tempo de criação da base de dados e aproveitar os recussos computacionais). A subpasta é organizada da seguinte forma, tendo como nome o nome da classe:
 
-<img src='imgs/flow_folders_output_augmentation_tipo.png' height="168.75" width="356.25" align="center" >
+<img src='imgs/augmentation_2.png' height="168.75" width="356.25" align="center" >
 
 5. **pos_neg**:
 
