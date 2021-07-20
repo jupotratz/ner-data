@@ -58,8 +58,8 @@ style F fill:#DDA0D6
 
 #### Lista de estidades
 As listas de entidades são formadas por palavras ou expressões relacionadas a uma classe de interesse no domínio de Óleo & Gás. A figura abaixo mostra a quantidade de palavras / termos relacionados de cada classe. Essaa foram fornecidas por especialistas da área.
-
 <img src='imgs/ner_lists.png' height="500" width="800" align="center" >
+
  - **Aumento da base de dados:** esse passo não é obrigatório. Mas caso seja necessário criar mais dados utilizando a técnica de substituição de palavras / termos relacionados a cada classe para aumentar a quantidade de amostras e apliar o vocabulário com todas as palavras / termos relacionados conhecidos.
    1. **Criar novas sentenças:** Seleciona as sentenças  com uma classe específica e faz a substituição simples das palavras por uma regra de substituição e definição da quantidade de novas sentenças que serão criadas. 
    2. **Anotar novas sentenças:** Realiza o processo de anotação automática nas novas sentenças criadas. 
