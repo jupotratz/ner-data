@@ -121,7 +121,7 @@ O conteúdo de cada pasta é detalhado a seguir:
 
 3. **texts_augmentation**: Quando se cria novas sentenças para o processo de **data augmentation** as novas sentenças com suas respectivas informações relevantes são salvas nesta pasta, sendo um arquivo .csv para cada tipo de entidade (é possível criar novas sentenças levando em conta uma classe específica se for necessário -sentença modificada, sentença original, documento de origem).
 
-<img src='imgs/texts_augmentation.png' height="300" width="500" align="center" >
+<img src='imgs/texts_augmentation.png' height="300" width="450" align="center" >
 
 4. **augmentation**: Nesta pasta são salvos os arquivos anotados para cada uma das classes que se deseja aumentar a quantidade de dados. O conteúdo da pasta é exemplificado na imagem abaixo:
 <img src='imgs/flow_folders_output_augmentation.png' height="243.75" width="243.75" align="center" >
