@@ -108,7 +108,7 @@ O formato final consistem em um .csv com os tokens e labels respectivos. Um exme
 - **Pastas e arquivos de saída:**
 
 A pasta final contendo as saídas após todo o passo a passo contém a estrutura definida pela imagem abaixo:
-<img src='imgs/output.png' height="375" width="437.5" align="center" >
+<img src='imgs/output_new.png' height="375" width="437.5" align="center" >
 
 O conteúdo de cada pasta é detalhado a seguir:
 
@@ -131,12 +131,6 @@ Vale salientar que essa pasta pode ter sub-pastas, caso haja a necessidade de se
 
 <img src='imgs/augmentation_2.png' height="375" width="750" align="center" >
 
-5. **pos_neg**: Após anottar as novas sentenças, temos que organizar os dados obtidos, realizar o processo de desambiguação de dados e selecionar as sentenças para treino, teste e validação. Essa etapa ocorre da seguinte forma:
-    1. Inicialmente selecionamos as sentenças anotadas inicialmente com o texto original e aplicamos o processo de desambiguação de dados (é criada uma nova coluna na tabela com a identifficação da sentença).
-    2. Após isso, criamos o novo label de anotação unindo todas as classes, apenas para os casos onde não há ambiguidade ente as sentenças evitando multiplas anotações para um mesmo token.
-    3. Identificamos amostras positivas e negativas
-    4. Salvamos o arquivo com as modificações sofridas.
-    5. Os procedimentos acima citados são feitos para as sentenças modificadas anotadas (arquivos.csv dentr da pasta **augmentation**)
-   1.  Após isso, se
-8. Existem duas possibilidades de separação para o dataset
-<img src='imgs/augmentation_2.png' height="375" width="750" align="center" >
+5. **result**: Após anottar as novas sentenças, temos que organizar os dados obtidos, realizar o processo de desambiguação de dados e selecionar as sentenças para treino, teste e validação. A pasta result recebe a versão final do dataset para treinamento do modelo no formato final. 
+
+<img src='imgs/result.png' height="375" width="750" align="center" >
