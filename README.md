@@ -198,7 +198,7 @@ python get_new_sentences.py --out_folder './output/' --folder_ner_list './data/'
 |--number_of_processors|-p|Número de processadores a serem utilizados para paralelizar as tarefas|Quanto mais processadores melhor é um processo demorado!!!|
 |--limit_words|-l|Limita a quantidade de palavras da lista de entidades que serão usadas para realizar as substituições automáticas.|aconselhável limitar classes com grande quantidade de palavras (poco,litilogia,geocronologia,etc).|
 
-### 3. Anotar novas sentenças
+### 4. Anotar novas sentenças
 ```bash
 python annotation.py --out_folder './output/' -d './data/' --number_of_processors 48 --tipo 'campo' 
 ```
@@ -212,7 +212,7 @@ python annotation.py --out_folder './output/' -d './data/' --number_of_processor
 python annotation.py --out_folder './output/' -d './data/' --number_of_processors 48 --tipo 'campo' --number_of_chunks 5 --chunk_id 4
 ```
 
-### 4. Desambiguar dados e definir amostras positivas e negativas e um novo label multiclasse
+### 5. Desambiguar dados e definir amostras positivas e negativas e um novo label multiclasse
 ```bash
 python join_desambiguation.py --out_folder './output/' --folder_ner_list './data/' 
 ```
@@ -221,7 +221,7 @@ python join_desambiguation.py --out_folder './output/' --folder_ner_list './data
 |--out_folder|-o|Pasta principals onde serão salvos os arquivos de saída.|Essa pasta vai conter subpastas com nomes já definidos.|
 |--folder_ner_list|-d|Pasta contendo os .txts que contém as listas de palavras relacionadas a cada entidade.|É importante que o nome de cada arquivo .txt dessa pasta seja a entidade de enterece (**exemplo: poco.txt**)|
 
-### 5. Criando o datasert final
+### 6. Criando o datasert final
 
 ```bash
 python split_data.py --out_folder './output/' --tipo 1 
@@ -230,6 +230,14 @@ python split_data.py --out_folder './output/' --tipo 1
 |---------|----------|---------|----------|
 |--out_folder|-o|Pasta principals onde serão salvos os arquivos de saída.|Essa pasta vai conter subpastas com nomes já definidos.|
 |--tipo|-t|Tipo de divisão que será realizada.|Por dafault é igual a 1 (Separação de treino + validação e teste por meio da sentença original.). Mas também pode ser igual a 2 (Separação de treino + validação e teste por meio do documento de origem da sentença.)|
+
+### Observações
+
+ - Só é possível realizar os passos 3 e 4, 5 e 6 após o término do passo 2.
+ - Os passos 3 e 4 não são obrigatórios,mas eles auxiliam no processo de ampliar a base de dados, visto que nem sempre teremos texto suficiente contendo todas as informações de todas as classes. 
+ - O processo geral é demorado e a depender do seu recurso computacional pode levar mais de um dia. 
+ - Caso você tenha muitas máquinas disponíveis (como por exemplo no cluster Santos Dumond), utilize a maior quantidade possível e faça a subdivisão de processos. Reduz consideravelmente o tempo de criação da base de dados final. 
+
 
 # Output 
 
