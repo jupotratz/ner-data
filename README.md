@@ -13,15 +13,13 @@ A(Pré-Processamento) -->B(Anotação - Distant Supervision)
 B --> D(Criar novas sentenças)
 D --> E(Anotar novas sentenças)
 B --> G
-E --> G
-F --> G(Desambiguar)
+E --> G(Desambiguar)
 G --> H(Treino, Teste e Validação)
 
 style A fill:#4169E1
 style B fill:#B22222
 style D fill:#228B22
 style E fill:#B22222
-style F fill:#FFD700
 style G fill:#FFD700
 style H fill:#DDA0D6
 ```
