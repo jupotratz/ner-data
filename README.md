@@ -86,6 +86,8 @@ O formato final consistem em um .csv com os tokens e labels respectivos. Um exme
 |27|	agosto	|O|	48925|
 
 
+
+
 ## Descrição do fluxo do projeto
 
 
@@ -94,13 +96,20 @@ O formato final consistem em um .csv com os tokens e labels respectivos. Um exme
  2. Separação da pontuação do texto (exemplo: teste: --> teste :) 
  3. O pré-processamento realizado realiza tranformações e limpezas de tal forma que as sentenças sejam semelhantes, em termos de formatação, às sentenças encontradas no **geocorpus** (uma espécie de dataset GOLDEN para a aplicação NER no domínio de Óle & Gás). Geocurpus está disponível em: https://github.com/jneto04/geocorpus
  
- - **Anotação:**
+ - **Anotação:** Consiste me anotar as sentenças automaticamente no formato BIO, explicado anteriormente, utilizando a técnica de **distant supervison**. 
  - **Aumento da base de dados:**
- - **Criar novas sentenças:**
- - **Anotar novas sentenças:**
- - **Agrupar dataset:**
- - **Desambiguar:**
- - **Treino, Teste e Validação:**
+      1. **Criar novas sentenças:**
+      2. **Anotar novas sentenças:**
+ - **Desambiguar:** Essa etapa ocorre da seguinte forma:
+      1. Inicialmente selecionamos as sentenças anotadas inicialmente com o texto original e aplicamos o processo de desambiguação de dados (é criada uma nova coluna na tabela com a identifficação da sentença).
+      2. Após isso, criamos o novo label de anotação unindo todas as classes, apenas para os casos onde não há ambiguidade ente as sentenças evitando multiplas anotações para um mesmo token.
+      3. Identificamos amostras positivas e negativas.
+      4. Salvamos o arquivo com as modificações sofridas.
+      5. Os procedimentos acima citados são feitos para as sentenças modificadas anotadas no data augmentation (arquivos .csv dentro da pasta **augmentation**) 
+
+ - **Treino, Teste e Validação:** Existem duas possibilidades de separação para o dataset
+      1. Separação de treino + validação e teste por meio da sentença original.
+      2. Separação de treino + validação e teste por meio do documento de origem da sentença.
 
 
 ## Output 
@@ -133,4 +142,4 @@ Vale salientar que essa pasta pode ter sub-pastas, caso haja a necessidade de se
 
 5. **result**: Após anottar as novas sentenças, temos que organizar os dados obtidos, realizar o processo de desambiguação de dados e selecionar as sentenças para treino, teste e validação. A pasta result recebe a versão final do dataset para treinamento do modelo no formato final. 
 
-<img src='imgs/result.png' height="375" width="750" align="center" >
+<img src='imgs/result.png' height="350" width="750" align="center" >
