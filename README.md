@@ -149,4 +149,4 @@ Vale salientar que essa pasta pode ter sub-pastas, caso haja a necessidade de se
 
 5. **result**: Após anottar as novas sentenças, temos que organizar os dados obtidos, realizar o processo de desambiguação de dados e selecionar as sentenças para treino, teste e validação. A pasta result recebe a versão final do dataset para treinamento do modelo no formato final. 
 
-<img src='imgs/result.png' height="350" width="750" align="center" >
+<img src='imgs/result.png' height="262.5" width="562.5" align="center" >
