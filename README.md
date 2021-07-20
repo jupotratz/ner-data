@@ -1,5 +1,10 @@
 # Named Entity Recognition Dataset
 
+## Observação
+Para visualizar os diagramas presentes neste Readme instale a seguinte extensão **GitHub + Mermaid** no seu navegador:
+ - **Google Chrome**: https://chrome.google.com/webstore/detail/github-+-mermaid/goiiopgdnkogdbjmncgedmgpoajilohe
+ - **Firefoz**: https://addons.mozilla.org/pt-BR/firefox/addon/github-mermaid/
+
 ## Descrição do Projeto
 Este repositório tem a função de aprensentar uma metodologia e as ferramentas para a criação de um banco de dados para o treinamento de uma rede neural para a tarefa de reconhecimento de entidades nomeadas (NER) utilizando para tal a técnica de **distant siupervision**. Uma visão geral da metodologia para a criação da base de dados pode ser obsvervada na figura abaixo.
 ```mermaid
@@ -102,11 +107,13 @@ O formato final consistem em um .csv com os tokens e labels respectivos. Um exme
 - **Pastas e arquivos de saída:**
 
 A pasta final contendo as saídas após todo o passo a passo contém a estrutura definida pela imagem abaixo:
-<img src='imgs/flow_folders_output.png' height="325" width="400" align="center" >
+<img src='imgs/output.png' height="325" width="400" align="center" >
 
 O conteúdo de cada pasta é detalhado a seguir:
 
 1. **full_text**: Nesta pasta será salvo um arquivo full_text.json com o texto pré-processado e seu respectivo documento de origem.
+<img src='imgs/full_text.png' height="150" width="243.75" align="center" >
+
 
 2. **aux**: É uma pasta auxiliar criada no caso de sub-dividir o processo de anotação dos dados em sub-processos (**num_of_chuncks diferente de 1**), desde que **não seja** para o processo de **data augmentation** (para o data augmentation é criada uma pasta própria). Neste caso ao realizar o processo de criação de novas sentenças, caso o processo de anotação inicial tenha sido sub-dividido em sub-processos será realizada a junção desses arquivos para formar os arquivos sentences.csv e sentences_annotation.csv que são necessários para criar novas sentenças.
 
@@ -122,4 +129,6 @@ O conteúdo de cada pasta é detalhado a seguir:
 Vale salientar que essa pasta pode ter sub-pastas, caso haja a necessidade de se subdividir os processos de anotação para pelo menos uma das classe (uma forma de aproveitar máquinas disponíveis). Caso isso seja, necessário para reduzir o tempo de criação da base de dados a subpasta é organizada da seguinte forma, tendo como nome o nome da classe:
 
 <img src='imgs/flow_folders_output_augmentation_tipo.png' height="168.75" width="356.25" align="center" >
+
+5. **pos_neg**:
 
