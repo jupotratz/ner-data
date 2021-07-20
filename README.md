@@ -119,6 +119,49 @@ O formato final consistem em um .csv com os tokens e labels respectivos. Um exme
 |27|	agosto	|O|	48925|
 
  
+## Passo a Passo
+
+### Docker image
+
+- Caminho SDU (.sif) 
+
+```
+/scratch/parceirosbr/buscaict/share/dockers/ner_pytorch_2.1_latest.sif
+```
+ - Docker pull (Docker Hub)
+
+```
+docker pull strink/relation-extraction:tf2.3
+```
+
+ - Docker build
+ 
+```
+docker build -t <docker image name:tag> .
+```
+
+### Em caso de execução local
+
+```
+docker run -it -v <local folder>:<docker folder> -u $(id -u):$(id -g) --net=host -e HOME=<docker folder> --rm <docker image name:tag> /bin/bash
+```
+
+```
+jupyter notebook --ip=0.0.0.0 --port=<porta definida> --no-browser --allow-root --notebook-dir=<docker folder>
+```
+
+### Em caso de execução no Santos Dumond
+
+Para rodar por meio de docker no SDU temos que utilizar o singularity, portanto após submeter o processo e entrar no nó que foi atribuído (por meio de ssh), dentro do nó podemos utilizar o singularity para abrir um container através de uma imagem já criada (.sif) deverá ser executado o seguinte comendo.
+
+ - **Para filas de CPU**
+```
+ssh sdumont<NODE_ID>
+```
+ ```
+singularity run -B <forder_share> <docker_path(.sif)> python main.py -i './' -c "0" -m 1 -f './000001.txt' -e 'utf-16'"
+```
+
 ## Output 
 
 - **Pastas e arquivos de saída:**
