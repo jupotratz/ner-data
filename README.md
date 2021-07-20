@@ -92,6 +92,8 @@ O formato final consistem em um .csv com os tokens e labels respectivos. Um exme
  - **Pré-Processamento** Nesta etapa o texto contidos em todos os documentos .txt encontrados nas pastas dadas como entrada são lidos e sofrem uma limpeza.
  1. Remoção de caracteres especiais
  2. Separação da pontuação do texto (exemplo: teste: --> teste :) 
+
+* O pré-processamento realizado realiza tranformações e limpezas de tal forma que as sentenças sejam semelhantes, em termos de formatação, às sentenças encontradas no **geocorpus** (uma espécie de dataset GOLDEN para a aplicação NER no domínio de Óle & Gás). Geocurpus está disponível em: https://github.com/jneto04/geocorpus
  
  - **Anotação:**
  - **Aumento da base de dados:**
