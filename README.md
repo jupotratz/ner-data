@@ -145,7 +145,7 @@ O conteúdo de cada pasta é detalhado a seguir:
 
 Vale salientar que essa pasta pode ter sub-pastas, caso haja a necessidade de se subdividir os processos de anotação para pelo menos uma das classe (uma forma de aproveitar máquinas disponíveis caso seja necessário reduzir o tempo de criação da base de dados e aproveitar os recussos computacionais). A subpasta é organizada da seguinte forma, tendo como nome o nome da classe:
 
-<img src='imgs/augmentation_2.png' height="375" width="750" align="center" >
+<img src='imgs/augmentation_2.png' height="350" width="750" align="center" >
 
 5. **result**: Após anottar as novas sentenças, temos que organizar os dados obtidos, realizar o processo de desambiguação de dados e selecionar as sentenças para treino, teste e validação. A pasta result recebe a versão final do dataset para treinamento do modelo no formato final. 
 
